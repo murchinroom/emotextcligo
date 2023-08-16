@@ -23,11 +23,15 @@ import (
 )
 
 func main() {
-    # emotextcligo.EmotextServer = "http://localhost:51061" or set env EMOTEXT_SERVER
+    // emotextcligo.EmotextServer = "http://localhost:51061" or set env EMOTEXT_SERVER
     text := "抱歉，今天很开心！"
 
-    res, _ := emotextcligo.Query(text)
-    # res.Emotions = emotextcligo.Emotions21To7(res.Emotions)
+    res, err := emotextcligo.Query(text)
+    if err != nil {
+        panic(err)
+    }
+
+    // res.Emotions = emotextcligo.Emotions21To7(res.Emotions)
 
     fmt.Println("Emotions:", res.Emotions)
     fmt.Println("Polarity:", res.Polarity)
